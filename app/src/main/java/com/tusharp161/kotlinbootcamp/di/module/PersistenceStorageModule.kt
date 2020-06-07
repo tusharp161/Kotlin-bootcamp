@@ -31,15 +31,9 @@ class PersistenceStorageModule {
     }
 
     @Provides
-    @Named("server_url")
-    fun providesServerUrl():String{
-        return "Welcome User"
-    }
-
-    @Provides
-    fun providesRepository( @Named("server_url")url: String,mainDao: MainDao,
-                            countryService: CountryService
+    @Singleton
+    fun providesRepository(mainDao: MainDao, countryService: CountryService
     ): ICountryRepository {
-        return MainRepository(url, mainDao, countryService)
+        return MainRepository(mainDao, countryService)
     }
 }
