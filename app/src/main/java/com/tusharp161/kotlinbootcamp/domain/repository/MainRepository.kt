@@ -7,16 +7,16 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class MainRepository @Inject constructor(
-    @Named("server_url") val url: String,
     val mainDao: MainDao,
     val countryService: CountryService
 ) : ICountryRepository {
 
-    override fun getData() : String{
-        return url
-    }
-
-    override fun getAllCountries(): List<CountryResponse> {
-        return countryService.getAllCountries()
+    override suspend fun getAllCountries(): List<CountryResponse>? {
+        var listOfCountries : List<CountryResponse>? = ArrayList()
+        val response = countryService.getAllCountries().execute()
+        if(response.isSuccessful){
+            listOfCountries = response.body()
+        }
+        return listOfCountries
     }
 }
