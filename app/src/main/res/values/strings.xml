@@ -8,4 +8,5 @@
     <string name="label_region">Region</string>
     <string name="label_sub_region">Sub Region</string>
     <string name="label_population">Population</string>
+    <string name="network_error_message">Please check your internet connection and try again</string>
 </resources>

@@ -14,11 +14,16 @@ class CountryListViewModel @Inject constructor(private val mainRepository: ICoun
     ViewModel() {
 
     val countryListLiveData:MutableLiveData<List<CountryResponse>> = MutableLiveData()
+    val errorStateLiveData:MutableLiveData<String> = MutableLiveData()
 
     fun getDataFromRepo()  {
         CoroutineScope(IO).launch {
-            val list = mainRepository.getAllCountries()
-            countryListLiveData.postValue(list)
+            try {
+                val list = mainRepository.getAllCountries()
+                countryListLiveData.postValue(list)
+            }catch (e:Exception){
+                errorStateLiveData.postValue("Error occurred, Please try again!!")
+            }
         }
     }
 }

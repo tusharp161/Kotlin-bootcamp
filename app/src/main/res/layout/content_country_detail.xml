@@ -8,7 +8,7 @@
     tools:context=".view.CountryDetailActivity"
     tools:showIn="@layout/activity_country_detail">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_margin="32dp"
+        android:layout_margin="@dimen/margin_32"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
